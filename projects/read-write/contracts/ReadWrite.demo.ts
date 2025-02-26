@@ -1,10 +1,8 @@
 import * as algosdk from 'algosdk';
 import * as algokit from '@algorandfoundation/algokit-utils';
 import { ReadWriteClient } from './clients/ReadWriteClient';
-
-const algodClient = new algosdk.Algodv2('a'.repeat(64), 'http://localhost', 4001);
-const indexerClient = new algosdk.Indexer('a'.repeat(64), 'http://localhost', 8980);
-const kmdClient = new algosdk.Kmd('a'.repeat(64), 'http://localhost', 4002);
+import { ALGOD_PORT, ALGOD_TOKEN, ALGOD_URL, WALLET_MNEMONIC } from './config';
+const algodClient = new algosdk.Algodv2(ALGOD_TOKEN, ALGOD_URL, ALGOD_PORT);
 
 const transferTestTokens = async (
   algodClient: algosdk.Algodv2,
@@ -47,7 +45,7 @@ const roundwithScale = (num: number, scale: number) => {
 };
 
 (async () => {
-  const sender = await algokit.getLocalNetDispenserAccount(algodClient, kmdClient);
+  const sender = algosdk.mnemonicToSecretKey(WALLET_MNEMONIC);
 
   const Caller = new ReadWriteClient(
     {
