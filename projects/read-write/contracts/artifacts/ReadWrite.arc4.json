@@ -1,0 +1,32 @@
+{
+  "name": "ReadWrite",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "writeName",
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "readName",
+      "args": [],
+      "returns": {
+        "type": "string"
+      }
+    }
+  ]
+}
